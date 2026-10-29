@@ -31,6 +31,13 @@ glassmorphism:
 
   app-header-background-color: "rgba(11,12,16,0.6)"
   app-header-text-color: "rgba(255,255,255,0.95)"
+  # .header's background-color can't hold the gradient+noise texture (that
+  # needs card-mod below), but blur, the active-tab indicator and the
+  # scrolled-state shadow are plain theme vars -- no card-mod required for
+  # those, so the header still gets most of the glass look even without it.
+  app-header-backdrop-filter: "blur(25px) saturate(120%)"
+  app-header-selection-bar-color: "#F7D6AF"
+  bar-box-shadow: "0px 6px 10px -11px rgba(0,0,0,0.8)"
 
   sidebar-background-color: "rgba(11,12,16,0.6)"
   sidebar-text-color: "rgba(255,255,255,0.85)"
@@ -105,11 +112,12 @@ glassmorphism:
   # (center / cover no-repeat fixed url("/local/your-image.jpg")).
   lovelace-background: "linear-gradient(180deg, #0b0c10 0%, #151515 45%, #15151e 100%) fixed"
 
-  # Header: same style, requires card-mod (HACS)
+  # Header gradient+noise texture (same recipe as the cards) and its
+  # always-on glass bezel -- the one part that genuinely needs card-mod,
+  # since background-color alone can't carry a gradient or an image.
   card-mod-theme: glassmorphism
   card-mod-root: |
     .header {
-      backdrop-filter: blur(25px) saturate(120%);
       background: var(--ha-card-background) !important;
       box-shadow: rgb(255,255,255) 0px 0px 11px -10px inset,
                   rgb(0,0,0) 0px 0px 12px -8px;
