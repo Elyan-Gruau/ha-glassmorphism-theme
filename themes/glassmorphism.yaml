@@ -48,12 +48,22 @@ glassmorphism:
     rgb(255,255,255) 0px 0px 11px -10px inset,
     rgb(0,0,0) 0px 0px 12px -8px
 
-  # Toggle switches: unchecked track/thumb stay glassy, checked state picks
-  # up the accent.
-  ha-switch-background-color: "rgba(255,255,255,0.15)"
+  # Toggle switches. The track has no box-shadow hook in ha-switch, so the
+  # carved look comes from a darker recessed fill + a faint rim instead; the
+  # thumb does expose a shadow var, used for a real embossed bezel.
+  ha-switch-background-color: "rgba(0,0,0,0.35)"
+  ha-switch-background-color-hover: "rgba(0,0,0,0.45)"
+  ha-switch-border-color: "rgba(255,255,255,0.08)"
   ha-switch-thumb-background-color: "rgba(255,255,255,0.85)"
+  ha-switch-thumb-border-color: "rgba(0,0,0,0.25)"
+  ha-switch-thumb-box-shadow: >-
+    0px 1px 2px 0px rgba(0,0,0,0.45),
+    0px 0px 4px -1px rgba(255,255,255,0.5) inset
   ha-switch-checked-background-color: "#F7D6AF"
+  ha-switch-checked-background-color-hover: "#f0c896"
+  ha-switch-checked-border-color: "rgba(255,255,255,0.25)"
   ha-switch-checked-thumb-background-color: "#15151e"
+  ha-switch-checked-thumb-border-color: "rgba(0,0,0,0.4)"
 
   # ha-button's "brand" (primary) fill no longer reads primary-color -- it
   # reads this separate token scale instead. HA always renders white text on
