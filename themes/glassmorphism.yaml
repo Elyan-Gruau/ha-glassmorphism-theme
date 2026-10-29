@@ -76,7 +76,13 @@ glassmorphism:
   # The select/menu popup surface already falls back to card-background-color,
   # but some components read this token directly -- set explicitly so the
   # popup never lands on its own white fallback. No blur hook exists here.
+  # Text inputs (search bar included) read this same surface token for their
+  # fill, so it covers both.
   wa-color-surface-raised: "rgba(16,17,22,0.78)"
+
+  # Input/search bar border defaults to a near-white neutral token -- too
+  # loud against the glass. A faint translucent rim instead.
+  wa-form-control-border-color: "rgba(255,255,255,0.12)"
 
   # ha-button's "brand" (primary) fill no longer reads primary-color -- it
   # reads this separate token scale instead. HA always renders white text on
