@@ -38,6 +38,39 @@ glassmorphism:
   sidebar-selected-icon-color: "#F7D6AF"
   sidebar-selected-text-color: "#F7D6AF"
 
+  # Dialogs (more-info, confirmations, settings) have their own surface and
+  # blur, separate from ha-card -- without these they default to near
+  # see-through with no blur at all.
+  ha-dialog-surface-background: "rgba(16,17,22,0.55)"
+  ha-dialog-surface-backdrop-filter: "blur(25px) saturate(120%)"
+  ha-dialog-border-radius: "1rem"
+  dialog-box-shadow: >-
+    rgb(255,255,255) 0px 0px 11px -10px inset,
+    rgb(0,0,0) 0px 0px 12px -8px
+
+  # Toggle switches: unchecked track/thumb stay glassy, checked state picks
+  # up the accent.
+  ha-switch-background-color: "rgba(255,255,255,0.15)"
+  ha-switch-thumb-background-color: "rgba(255,255,255,0.85)"
+  ha-switch-checked-background-color: "#F7D6AF"
+  ha-switch-checked-thumb-background-color: "#15151e"
+
+  # ha-button's "brand" (primary) fill no longer reads primary-color -- it
+  # reads this separate token scale instead. HA always renders white text on
+  # the "loud" fill, so that step stays dark enough to read; quiet/normal
+  # fills stay translucent accent tints with cream text on top.
+  ha-color-fill-primary-quiet-resting: "rgba(247,214,175,0.10)"
+  ha-color-fill-primary-quiet-hover: "rgba(247,214,175,0.16)"
+  ha-color-fill-primary-quiet-active: "rgba(247,214,175,0.10)"
+  ha-color-fill-primary-normal-resting: "rgba(247,214,175,0.20)"
+  ha-color-fill-primary-normal-hover: "rgba(247,214,175,0.28)"
+  ha-color-fill-primary-normal-active: "rgba(247,214,175,0.20)"
+  ha-color-fill-primary-loud-resting: "#5c3f1f"
+  ha-color-fill-primary-loud-hover: "#4a331a"
+  ha-color-fill-primary-loud-active: "#5c3f1f"
+  ha-color-on-primary-quiet: "#F7D6AF"
+  ha-color-on-primary-normal: "#F7D6AF"
+
   # Dark gradient wallpaper, no photo required. Override this key in your
   # own theme if you'd rather use a picture
   # (center / cover no-repeat fixed url("/local/your-image.jpg")).
