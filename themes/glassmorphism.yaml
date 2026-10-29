@@ -48,22 +48,35 @@ glassmorphism:
     rgb(255,255,255) 0px 0px 11px -10px inset,
     rgb(0,0,0) 0px 0px 12px -8px
 
-  # Toggle switches. The track has no box-shadow hook in ha-switch, so the
-  # carved look comes from a darker recessed fill + a faint rim instead; the
-  # thumb does expose a shadow var, used for a real embossed bezel.
-  ha-switch-background-color: "rgba(0,0,0,0.35)"
-  ha-switch-background-color-hover: "rgba(0,0,0,0.45)"
-  ha-switch-border-color: "rgba(255,255,255,0.08)"
-  ha-switch-thumb-background-color: "rgba(255,255,255,0.85)"
-  ha-switch-thumb-border-color: "rgba(0,0,0,0.25)"
+  # Toggle switches. The track has no box-shadow hook in ha-switch, so depth
+  # comes from value contrast instead: track always dark/recessed, thumb
+  # always light/raised, in both states -- only the hue shifts to gold when
+  # checked. The thumb does get a real bezel via its one exposed shadow var.
+  ha-switch-background-color: "rgba(0,0,0,0.45)"
+  ha-switch-background-color-hover: "rgba(0,0,0,0.55)"
+  ha-switch-border-color: "rgba(255,255,255,0.06)"
+  ha-switch-thumb-background-color: "rgba(235,235,235,0.92)"
+  ha-switch-thumb-background-color-hover: "rgba(255,255,255,0.96)"
+  ha-switch-thumb-border-color: "rgba(0,0,0,0.3)"
   ha-switch-thumb-box-shadow: >-
     0px 1px 2px 0px rgba(0,0,0,0.45),
     0px 0px 4px -1px rgba(255,255,255,0.5) inset
-  ha-switch-checked-background-color: "#F7D6AF"
-  ha-switch-checked-background-color-hover: "#f0c896"
-  ha-switch-checked-border-color: "rgba(255,255,255,0.25)"
-  ha-switch-checked-thumb-background-color: "#15151e"
-  ha-switch-checked-thumb-border-color: "rgba(0,0,0,0.4)"
+  ha-switch-checked-background-color: "#7a5c2e"
+  ha-switch-checked-background-color-hover: "#8a6a3a"
+  ha-switch-checked-border-color: "rgba(255,255,255,0.18)"
+  ha-switch-checked-thumb-background-color: "#F7D6AF"
+  ha-switch-checked-thumb-background-color-hover: "#ffe6bf"
+  ha-switch-checked-thumb-border-color: "rgba(0,0,0,0.25)"
+
+  # Kill the stray default (often blue/teal) focus ring so it matches the
+  # accent instead, across switches, buttons and inputs.
+  ha-color-focus: "#F7D6AF"
+  wa-focus-ring-color: "#F7D6AF"
+
+  # The select/menu popup surface already falls back to card-background-color,
+  # but some components read this token directly -- set explicitly so the
+  # popup never lands on its own white fallback. No blur hook exists here.
+  wa-color-surface-raised: "rgba(16,17,22,0.78)"
 
   # ha-button's "brand" (primary) fill no longer reads primary-color -- it
   # reads this separate token scale instead. HA always renders white text on
