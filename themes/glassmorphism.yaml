@@ -91,6 +91,23 @@ glassmorphism:
   # loud against the glass. A faint translucent rim instead.
   wa-form-control-border-color: "rgba(255,255,255,0.12)"
 
+  # Neutral "fill" tokens default to near-white (Material's light-mode
+  # tonal scale, same family as the primary one fixed for buttons earlier).
+  # These two tiers alone cover: the history/logbook "no targets" banner,
+  # the hover background on integration cards, and the hover background on
+  # dropdown/list items -- all three read one of these two tiers.
+  ha-color-fill-neutral-quiet-resting: "rgba(255,255,255,0.06)"
+  ha-color-fill-neutral-quiet-hover: "rgba(255,255,255,0.10)"
+  ha-color-fill-neutral-quiet-active: "rgba(255,255,255,0.06)"
+  ha-color-fill-neutral-normal-resting: "rgba(255,255,255,0.08)"
+  ha-color-fill-neutral-normal-hover: "rgba(255,255,255,0.14)"
+  ha-color-fill-neutral-normal-active: "rgba(255,255,255,0.08)"
+
+  # Progress bar track (the unfilled portion) has its own dedicated hook;
+  # the filled indicator already follows the gold accent via the primary
+  # token fixed earlier.
+  ha-progress-bar-track-color: "rgba(255,255,255,0.12)"
+
   # ha-button's "brand" (primary) fill no longer reads primary-color -- it
   # reads this separate token scale instead. HA always renders white text on
   # the "loud" fill, so that step stays dark enough to read; quiet/normal
