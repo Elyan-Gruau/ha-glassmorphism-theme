@@ -1,4 +1,12 @@
 glassmorphism:
+  # Dark-only. HA forces light mode for any theme without a modes.dark
+  # section, which leaves its light-mode surface tokens (white toasts, menus,
+  # inputs...) underneath everything this file doesn't override. A dark mode
+  # with no light mode makes HA always pick dark; the top-level vars below
+  # still apply on top of it.
+  modes:
+    dark: {}
+
   mainPadding: "1rem"
 
   # Noise: the grain tile is embedded as a base64 data URI, so the theme
@@ -139,3 +147,36 @@ glassmorphism:
       box-shadow: rgb(255,255,255) 0px 0px 11px -10px inset,
                   rgb(0,0,0) 0px 0px 12px -8px;
     }
+
+  # Media control card seek bar. The card hardcodes its own light-grey
+  # --ha-slider-track-color, so no theme var can reach it -- card-mod has to
+  # override it from inside the card. The track is pressed into the glass
+  # (dark inset top-left, faint white catch-light bottom-right); the filled
+  # indicator sits on top of it with a soft bevel. !important because the
+  # card's adopted stylesheet otherwise wins over card-mod's <style>.
+  #
+  # Logbook sticky date header ("Today · ..."), e.g. the Security dashboard's
+  # Activity sidebar. It's painted with plain card-background-color, so rows
+  # scrolling under it show straight through. It sits two shadow roots deep
+  # (ha-logbook > ha-logbook-renderer), hence the yaml form and its $ path.
+  card-mod-card-yaml: |
+    .: |
+      ha-slider {
+        --ha-slider-track-color: rgba(0,0,0,0.5) !important;
+      }
+      ha-slider::part(track) {
+        box-shadow: -1px 1px 5px -1px rgb(0,0,0) inset,
+                    1px -1px 5px -1px rgba(255,255,255,0.12) inset;
+      }
+      ha-slider::part(indicator) {
+        box-shadow: 1px 2px 6px -4px rgba(255,255,255,0.67) inset,
+                    0px 0px 6px -3px rgba(0,0,0,0.53) inset;
+      }
+    ha-logbook $ ha-logbook-renderer $: |
+      .floating-date {
+        background-color: rgba(16,17,22,0.55) !important;
+        backdrop-filter: blur(25px) saturate(120%);
+        -webkit-backdrop-filter: blur(25px) saturate(120%);
+        box-shadow: rgb(255,255,255) 0px -8px 11px -10px inset,
+                    0px 6px 10px -11px rgba(0,0,0,0.8);
+      }
